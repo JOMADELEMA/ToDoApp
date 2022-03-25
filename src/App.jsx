@@ -4,13 +4,14 @@ import {
   ColorSchemeProvider,
   ColorScheme,
 } from "@mantine/core";
-import CambiarTema from "./Components/CambiarTema";
+import Home from "./Components/Home";
+// import CambiarTema from "./Components/CambiarTema";
 
 function App() {
   const [colorScheme, setColorScheme] = useState("dark");
 
   const toggleColorScheme = (value?: ColorScheme) => {
-    console.log(colorScheme);
+    //console.log(colorScheme);
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
   };
 
@@ -21,7 +22,9 @@ function App() {
       
     >
       <MantineProvider theme={{ colorScheme }} withGlobalStyles>
-        <CambiarTema></CambiarTema>
+
+        <Home />
+        {/* <CambiarTema></CambiarTema> */}
       </MantineProvider>
     </ColorSchemeProvider>
   );
