@@ -1,35 +1,29 @@
-import { MantineProvider, MantineThemeOverride } from "@mantine/core";
-import react, {useState} from 'react'
-import "./App.css";
-import Boton from "./Components/Boton";
-import ThemeToggle from "./Components/ThemeToggle";
-
-const miTemaOscuro: MantineThemeOverride = {
-  colorScheme: 'dark',
-  primaryColor: 'red',
-  defaultRadius: 0,
-};
-
-const miTemaClaro: MantineThemeOverride = {
-  colorScheme: 'light',
-  primaryColor: 'red',
-  defaultRadius: 0,
-};
+import { useState } from "react";
+import {
+  MantineProvider,
+  ColorSchemeProvider,
+  ColorScheme,
+} from "@mantine/core";
+import CambiarTema from "./Components/CambiarTema";
 
 function App() {
-  
-  const [tema, setTema] = useState(false)
-   
+  const [colorScheme, setColorScheme] = useState("dark");
+
+  const toggleColorScheme = (value?: ColorScheme) => {
+    console.log(colorScheme);
+    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+  };
 
   return (
-    <MantineProvider theme={ tema? miTemaClaro : miTemaOscuro} withGlobalStyles>
-      <div className="App">
-        {/* <ThemeToggle /> */}
-        <Boton texto="Hola mundo" variante="outline">
-          {" "}
-        </Boton>
-      </div>
-    </MantineProvider>
+    <ColorSchemeProvider
+      colorScheme={colorScheme}
+      toggleColorScheme={toggleColorScheme}
+      
+    >
+      <MantineProvider theme={{ colorScheme }} withGlobalStyles>
+        <CambiarTema></CambiarTema>
+      </MantineProvider>
+    </ColorSchemeProvider>
   );
 }
 
