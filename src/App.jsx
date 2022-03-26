@@ -4,8 +4,8 @@ import {
   ColorSchemeProvider,
   ColorScheme,
 } from "@mantine/core";
-import Home from "./Components/Home";
-// import CambiarTema from "./Components/CambiarTema";
+import Tareas from "./Components/Tareas";
+// import Home from "./Components/Home";
 
 function App() {
   const [colorScheme, setColorScheme] = useState("dark");
@@ -19,11 +19,9 @@ function App() {
     <ColorSchemeProvider
       colorScheme={colorScheme}
       toggleColorScheme={toggleColorScheme}
-      
     >
       <MantineProvider theme={{ colorScheme }} withGlobalStyles>
-
-        <Home />
+        <Tareas />
         {/* <CambiarTema></CambiarTema> */}
       </MantineProvider>
     </ColorSchemeProvider>
