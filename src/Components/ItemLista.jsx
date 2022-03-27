@@ -6,7 +6,7 @@ function ItemLista(props) {
   const [seleccionado, setSeleccionado] = useState(false);
 
   let {valor} = props;
-  console.log(valor)
+  // console.log(valor)
 
   function seleccionar() {
     console.log(seleccionado);
@@ -18,6 +18,7 @@ function ItemLista(props) {
   return (
     <>
       <Paper
+      onClick={() => seleccionar()}
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -32,7 +33,7 @@ function ItemLista(props) {
           },
         })}
       >
-        <Group onClick={() => seleccionar()}>
+        <Group >
           {seleccionado ? <SquareCheck size={25} /> : <Square size={25} />}
 
           {seleccionado ? (

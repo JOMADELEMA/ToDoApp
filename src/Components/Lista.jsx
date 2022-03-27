@@ -8,7 +8,7 @@ function Lista(props) {
   return (
     <>
       {listado.map((item) => (
-        <ItemLista valor={item} />
+        <ItemLista key={item} valor={item} />
       ))}
     </>
   );
