@@ -1,39 +1,48 @@
 import React, { useState } from "react";
-import { Paper, Group, Text, ActionIcon } from "@mantine/core";
+import { Paper, Group, Text, ActionIcon, Button } from "@mantine/core";
 import { Square, SquareCheck, Trash } from "tabler-icons-react";
 
 function ItemLista(props) {
   const [seleccionado, setSeleccionado] = useState(false);
 
-  let {valor} = props;
+  let { valor } = props;
   // console.log(valor)
 
   function seleccionar() {
-    console.log(seleccionado);
-    if (!seleccionado) {
-      setSeleccionado("false");
+    //console.log(seleccionado);
+    if (seleccionado === true) {
+      setSeleccionado(false);
     }
+    if (seleccionado === false) {
+      setSeleccionado(true);
+    }
+  }
+
+  const borrar=()=>{
+    props.llamaPadre()
   }
 
   return (
     <>
       <Paper
-      onClick={() => seleccionar()}
+        onClick={() => seleccionar()}
         style={{
           display: "flex",
           justifyContent: "space-between",
           userSelect: "none",
+          width: "100%",
         }}
         withBorder
         p="sm"
-        shadow="sm"
+        m="sm"
+        shadow="xs"
         sx={(theme) => ({
           "&:hover": {
-            backgroundColor: theme.colors.gray[1],
+            backgroundColor: theme.colors.gray[2],
           },
         })}
       >
-        <Group >
+        <Group>
           {seleccionado ? <SquareCheck size={25} /> : <Square size={25} />}
 
           {seleccionado ? (
@@ -49,10 +58,9 @@ function ItemLista(props) {
               {valor}
             </Text>
           )}
+
+          <Button onClick={borrar}>Llamar padre</Button>
         </Group>
-        <ActionIcon variant="hover" color="red" radius="md">
-          <Trash size={18} />
-        </ActionIcon>
       </Paper>
     </>
   );

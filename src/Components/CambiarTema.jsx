@@ -41,7 +41,7 @@ function CambiarTema() {
       onClick={() => toggleColorScheme()}
       title="Toggle color scheme"
     >
-      {dark ?  <Sun size={18} /> : <MoonStars size={18} /> }
+      {dark ?  <Sun size={40} /> : <MoonStars size={40} /> }
     </ActionIcon>
   );
 }

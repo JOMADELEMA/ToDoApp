@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import CambiarTema from "./CambiarTema";
 import {
   ActionIcon,
@@ -14,8 +14,12 @@ import { Plus, Trash, Square, SquareCheck } from "tabler-icons-react";
 import Lista from "./Lista";
 
 function Tareas() {
-
-  const [tareas, setTareas] = useState(["tarea 1", "tarea 2", "tarea 3", "tarea 4"])
+  const [tareas, setTareas] = useState([
+    "tarea 1",
+    "tarea 2",
+    "tarea 3",
+    "tarea 4",
+  ]);
   let nuevaTarea = React.createRef();
 
   const agregarTarea = (e) => {
@@ -24,18 +28,33 @@ function Tareas() {
     let tarea = nuevaTarea.current.value;
     //console.log(nuevaTarea.current.value);
     setTareas([...tareas, tarea]);
-  }
+  };
 
   return (
     <>
       <Container>
-        <CambiarTema />
+        <Center>
+          <Group style={{display: "flex", alignItems: "center", justifyContent: "space-around"}}>
+            <h1>App de tareas</h1>
+            <CambiarTema />
+          </Group>
+        </Center>
 
         <Center>
           <Group grow style={{ width: "100%" }} m="xl">
-            <Input radius="sm"placeholder="Ingrese la tarea" ref={nuevaTarea} />
+            <Input
+              radius="sm"
+              size="lg"
+              placeholder="Ingrese la tarea"
+              ref={nuevaTarea}
+            />
           </Group>
-          <ActionIcon radius="xl" variant="hover" color="green" onClick={()=>agregarTarea()}>
+          <ActionIcon
+            radius="xl"
+            variant="hover"
+            color="green"
+            onClick={() => agregarTarea()}
+          >
             <Plus />
           </ActionIcon>
         </Center>
