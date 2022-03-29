@@ -5,8 +5,8 @@ import { Square, SquareCheck, Trash } from "tabler-icons-react";
 function ItemLista(props) {
   const [seleccionado, setSeleccionado] = useState(false);
 
-  let { valor } = props;
-  // console.log(valor)
+  let { valor, llave } = props;
+  console.log(llave);
 
   function seleccionar() {
     //console.log(seleccionado);
@@ -16,10 +16,6 @@ function ItemLista(props) {
     if (seleccionado === false) {
       setSeleccionado(true);
     }
-  }
-
-  const borrar=()=>{
-    props.llamaPadre()
   }
 
   return (
@@ -58,8 +54,6 @@ function ItemLista(props) {
               {valor}
             </Text>
           )}
-
-          <Button onClick={borrar}>Llamar padre</Button>
         </Group>
       </Paper>
     </>

@@ -8,28 +8,26 @@ function Lista(props) {
   //console.log(listado);
   let contador = 0;
 
-  const borrarTarea = () => {
-    console.log();
-  }
+  const funcionBorrar = () => {
+    console.log("ohla desde la funcion")
+  };
 
   return (
     <>
       {listado.map((item) => (
-        <>
-          <Container
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-            
-          >
-            <ItemLista key={contador} valor={item} llamaPadre={borrarTarea()} />
-            <ActionIcon variant="hover" color="red" radius="md">
-              <Trash size={18} />
-            </ActionIcon>
-          </Container>
-        </>
+        <Container
+        key={contador++}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <ItemLista valor={item} llave={contador}/>
+          <ActionIcon variant="hover" color="red" radius="md" onClick={()=>funcionBorrar()}>
+            <Trash size={18} />
+          </ActionIcon>
+        </Container>
       ))}
     </>
   );
